@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm_architecture/view/home_screen.dart';
+import 'package:mvvm_architecture/utils/routes/routes.dart';
+import 'package:mvvm_architecture/utils/routes/routes_name.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomeScreen(),
+      initialRoute: RoutesName.home, // must match your defined route
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_architecture/utils/routes/routes_name.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +13,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Home Screen")),
-      body: Column(children: []),
+      body: Column(
+        children: [
+          Text("Home Scree"),
+          ElevatedButton(
+            onPressed: () => Navigator.pushNamed(context, RoutesName.login),
+            child: Text("Go to login Screen"),
+          ),
+        ],
+      ),
     );
   }
 }
