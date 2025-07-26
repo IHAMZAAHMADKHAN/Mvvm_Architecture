@@ -3,6 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
+  // we will use this function to shift focus from one text field to another text field
+  // we are using to avoid duplications of code
+  static void fieldFocusChange(
+    BuildContext context,
+    FocusNode current,
+    FocusNode nextFocus,
+  ) {
+    current.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
+
   static void toastMessage(String message) {
     Fluttertoast.showToast(
       msg: message,
