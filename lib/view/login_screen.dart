@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_architecture/resource/app_colors.dart';
+import 'package:mvvm_architecture/resource/component/round_button.dart';
+import 'package:mvvm_architecture/utils/routes/routes_name.dart';
 import 'package:mvvm_architecture/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,10 +17,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   FocusNode emailfocusNode = FocusNode();
   FocusNode passfocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    emailfocusNode.dispose();
+    passfocusNode.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.whiteColor,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -92,23 +106,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
 
                 // Login Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Add login logic
+                Center(
+                  child: RoundButton(
+                    title: "Login",
+                    onPress: () {
+                      // Navigator.pushNamed(context, RoutesName.home);
+                      if (_emailController.text.isEmpty) {
+                        Utils.toastMessage("Please Enter Your Email");
+                      } else if (_passwordController.text.isEmpty) {
+                        Utils.toastMessage("Please Enter Your Password");
+                      } else if (_passwordController.text.length < 6) {
+                        Utils.toastMessage("Please Enter 6 digit  Password");
+                      } else {
+                        Utils.flushBarErrorMessage("Api hit", context);
+                      }
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
                   ),
                 ),
 
