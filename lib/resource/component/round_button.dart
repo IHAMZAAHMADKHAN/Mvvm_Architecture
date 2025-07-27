@@ -8,11 +8,11 @@ class RoundButton extends StatelessWidget {
   final bool loading;
   final VoidCallback onPress;
   const RoundButton({
-    Key? key,
+    super.key,
     required this.title,
     this.loading = false,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class RoundButton extends StatelessWidget {
         ),
         child: Center(
           child: loading
-              ? const CircularProgressIndicator(color: Colors.white)
+              ? CircularProgressIndicator(color: Colors.white)
               : Text(
                   title,
                   style: const TextStyle(color: AppColors.whiteColor),

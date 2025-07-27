@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_architecture/resource/app_colors.dart';
 import 'package:mvvm_architecture/resource/component/round_button.dart';
-import 'package:mvvm_architecture/utils/routes/routes_name.dart';
 import 'package:mvvm_architecture/utils/utils.dart';
+import 'package:mvvm_architecture/viewmodel/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height * 1;
+    final authViewModel = Provider.of<AuthViewModel>(context);
+
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: Center(
@@ -108,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Login Button
                 Center(
                   child: RoundButton(
+                    loading: authViewModel.loading,
                     title: "Login",
                     onPress: () {
                       // Navigator.pushNamed(context, RoutesName.home);
@@ -118,7 +121,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       } else if (_passwordController.text.length < 6) {
                         Utils.toastMessage("Please Enter 6 digit  Password");
                       } else {
-                        Utils.flushBarErrorMessage("Api hit", context);
+                        Map data = {
+                          "email": _emailController.text.toString(),
+                          "password": _passwordController.text.toString(),
+                        };
+                        authViewModel.loginApi(data, context);
+                        print("hit api");
                       }
                     },
                   ),
