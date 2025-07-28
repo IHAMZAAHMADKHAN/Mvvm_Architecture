@@ -6,14 +6,14 @@ import 'package:mvvm_architecture/utils/utils.dart';
 import 'package:mvvm_architecture/viewmodel/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final ValueNotifier<bool> _obsecurepasswaord = ValueNotifier<bool>(true);
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -32,8 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final authViewModel = Provider.of<AuthViewModel>(context);
-    final size = MediaQuery.sizeOf(context);
-
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: Center(
@@ -43,13 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Welcome Back 👋",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(height: 8),
                 const Text(
-                  "Login to your account",
+                  "SignUP to your account",
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
                 const SizedBox(height: 32),
@@ -112,8 +106,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Login Button
                 Center(
                   child: RoundButton(
-                    loading: authViewModel.loading,
-                    title: "Login",
+                    loading: authViewModel.Signup_loading,
+                    title: "SignUP",
                     onPress: () {
                       // Navigator.pushNamed(context, RoutesName.home);
                       if (_emailController.text.isEmpty) {
@@ -127,22 +121,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           "email": _emailController.text.toString(),
                           "password": _passwordController.text.toString(),
                         };
-                        authViewModel.loginApi(data, context);
+                        authViewModel.SignUpapi(data, context);
                         print("hit api");
                       }
                     },
                   ),
                 ),
-                SizedBox(height: size.height * 0.02),
+
                 // Forgot Password
                 Align(
                   alignment: Alignment.center,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, RoutesName.signup);
+                      Navigator.pushNamed(context, RoutesName.login);
                     },
                     child: const Text(
-                      "Don't have an account? SignUp ",
+                      "Already Have Account? LogIN",
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),

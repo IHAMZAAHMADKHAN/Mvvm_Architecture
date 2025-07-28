@@ -43,7 +43,12 @@ class NetworkApiService implements BaseApiServices {
     try {
       Response response = await post(
         Uri.parse(url),
-        body: data,
+        // you can remove or change this for other project
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'reqres-free-v1', // 👈 ADD YOUR API KEY HERE
+        },
+        body: jsonEncode(data), // then simple boday and data
       ).timeout(const Duration(seconds: 10));
 
       responseJson = returnResponse(response);
