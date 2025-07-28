@@ -1,5 +1,7 @@
+// ignore_for_file: strict_top_level_inference, duplicate_ignore
+
 class AppException implements Exception {
-  // ignore: prefer_typing_uninitialized_variables
+  // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
   final _message;
   // ignore: prefer_typing_uninitialized_variables
   final _prefix;
