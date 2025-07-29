@@ -90,8 +90,6 @@ lib/
 ## 📸 Screenshot Preview
 
 <img width="496" height="603" alt="image" src="https://github.com/user-attachments/assets/2d4194d3-9c7a-4f2e-baee-0986dde88582" />
-<br>
-
 <img width="497" height="610" alt="image" src="https://github.com/user-attachments/assets/715e84a6-44aa-4d93-887b-3b00a399865d" />
 
 
