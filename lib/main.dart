@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserViewModel()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        title: 'MVVM Architecture',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),

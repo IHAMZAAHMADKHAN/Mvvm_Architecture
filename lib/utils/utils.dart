@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
+  static double averageRating(List<int> rating) {
+    int total = 0;
+    for (var i = 0; i < rating.length; i++) {
+      total += rating[i];
+    }
+    return double.parse((total / rating.length).toStringAsFixed(1));
+  }
+
   // we will use this function to shift focus from one text field to another text field
   // we are using to avoid duplications of code
   static void fieldFocusChange(

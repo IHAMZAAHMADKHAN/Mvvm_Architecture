@@ -3,13 +3,13 @@ class UserModel {
 
   UserModel({this.token});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
-    token = json['token'];
+  // Deserialize from JSON
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(token: json['token']);
   }
 
+  // Serialize to JSON
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['token'] = token;
-    return data;
+    return {'token': token};
   }
 }

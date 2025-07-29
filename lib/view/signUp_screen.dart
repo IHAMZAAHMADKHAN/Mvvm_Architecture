@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:mvvm_architecture/resource/app_colors.dart';
 import 'package:mvvm_architecture/resource/component/round_button.dart';
@@ -122,7 +124,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           "password": _passwordController.text.toString(),
                         };
                         authViewModel.SignUpapi(data, context);
-                        print("hit api");
                       }
                     },
                   ),

@@ -128,7 +128,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           "password": _passwordController.text.toString(),
                         };
                         authViewModel.loginApi(data, context);
-                        print("hit api");
                       }
                     },
                   ),
