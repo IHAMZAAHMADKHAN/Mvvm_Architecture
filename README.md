@@ -123,14 +123,4 @@ Check out:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
 
----
-
-Would you like me to:
-
-- Add screenshots section?
-- Generate badges (build passing, etc.)?
-- Help you publish it on GitHub?
-
-Let me know!
